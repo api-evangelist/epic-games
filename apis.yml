@@ -1,18 +1,15 @@
 aid: epic-games
 name: Epic Games
-description: >-
-  Epic Games is the studio behind Fortnite, the Unreal Engine, the Epic Games
-  Store, MetaHuman, RealityScan, Twinmotion, RAD Game Tools, and the Epic
-  Online Services (EOS) backend. Epic operates a unified developer portal at
-  dev.epicgames.com that hosts the EOS SDK and REST APIs (Auth, Connect,
-  Friends, Presence, Lobby, Sessions, Achievements, Stats, Leaderboards,
-  Player Data Storage, Title Storage, Voice, Sanctions, Anti-Cheat, Reports,
-  P2P, Ecom, User Info), the Unreal Engine documentation, the Epic Games
-  Store publishing tools, and the Kids Web Services (KWS) compliance platform.
-  EOS is cross-platform and runs on Windows, macOS, Linux, PlayStation, Xbox,
-  Switch, iOS, Android, and web. This profile rolls Epic's developer-facing
-  surfaces into a single index; the Unreal Engine surface has its own
-  dedicated profile.
+description: Epic Games is the studio behind Fortnite, the Unreal Engine, the Epic
+  Games Store, MetaHuman, RealityScan, Twinmotion, RAD Game Tools, and the Epic Online
+  Services (EOS) backend. Epic operates a unified developer portal at dev.epicgames.com
+  that hosts the EOS SDK and REST APIs (Auth, Connect, Friends, Presence, Lobby, Sessions,
+  Achievements, Stats, Leaderboards, Player Data Storage, Title Storage, Voice, Sanctions,
+  Anti-Cheat, Reports, P2P, Ecom, User Info), the Unreal Engine documentation, the
+  Epic Games Store publishing tools, and the Kids Web Services (KWS) compliance platform.
+  EOS is cross-platform and runs on Windows, macOS, Linux, PlayStation, Xbox, Switch,
+  iOS, Android, and web. This profile rolls Epic's developer-facing surfaces into
+  a single index; the Unreal Engine surface has its own dedicated profile.
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://www.epicgames.com
 created: '2024-01-01'
@@ -21,198 +18,190 @@ specificationVersion: '0.19'
 type: Index
 access: 3rd-Party
 tags:
+- Achievements
+- Anti-Cheat
+- Cross-Platform
+- EOS
+- Epic Online Services
+- Game Backend
+- Game Development
+- Games
+- Identity
+- Lobby
+- Matchmaking
+- Multiplayer
+- Sessions
+- Unreal Engine
+- Voice
+apis:
+- aid: epic-games:epic-online-services
+  name: Epic Online Services (EOS)
+  description: Epic Online Services is Epic's free cross-platform backend for games.
+    EOS exposes both a native C/C++ SDK (with Unity, Unreal, and platform wrappers)
+    and a set of REST web services covering identity (Epic Account Services, Connect,
+    Auth), social (Friends, Presence, Blocklist), play (Lobby, Sessions, P2P, Voice),
+    progression (Achievements, Stats, Leaderboards), storage (Player Data Storage,
+    Title Storage), integrity (Anti-Cheat, Sanctions, Reports), and commerce (Ecom).
+    All EOS APIs are gated behind an Epic developer organization, sandbox, and client
+    credentials issued in the EOS Developer Portal.
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://dev.epicgames.com/en-US/services/epic-online-services
+  baseURL: https://api.epicgames.dev
+  tags:
   - Achievements
   - Anti-Cheat
-  - Cross-Platform
   - EOS
-  - Epic Online Services
   - Game Backend
-  - Game Development
-  - Games
   - Identity
   - Lobby
-  - Matchmaking
-  - Multiplayer
   - Sessions
-  - Unreal Engine
   - Voice
-apis:
-  - aid: epic-games:epic-online-services
-    name: Epic Online Services (EOS)
-    description: >-
-      Epic Online Services is Epic's free cross-platform backend for games.
-      EOS exposes both a native C/C++ SDK (with Unity, Unreal, and platform
-      wrappers) and a set of REST web services covering identity (Epic
-      Account Services, Connect, Auth), social (Friends, Presence,
-      Blocklist), play (Lobby, Sessions, P2P, Voice), progression
-      (Achievements, Stats, Leaderboards), storage (Player Data Storage,
-      Title Storage), integrity (Anti-Cheat, Sanctions, Reports), and
-      commerce (Ecom). All EOS APIs are gated behind an Epic developer
-      organization, sandbox, and client credentials issued in the EOS
-      Developer Portal.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://dev.epicgames.com/en-US/services/epic-online-services
-    baseURL: https://api.epicgames.dev
-    tags:
-      - Achievements
-      - Anti-Cheat
-      - EOS
-      - Game Backend
-      - Identity
-      - Lobby
-      - Sessions
-      - Voice
-    properties:
-      - type: Portal
-        url: https://dev.epicgames.com
-      - type: Documentation
-        url: https://dev.epicgames.com/docs/epic-online-services
-      - type: GettingStarted
-        url: https://dev.epicgames.com/docs/epic-online-services/eos-get-started
-      - type: SDK
-        url: https://dev.epicgames.com/docs/epic-online-services/platform-sdks
-      - type: WebAPI
-        url: https://dev.epicgames.com/docs/web-api-ref
-  - aid: epic-games:epic-account-services
-    name: Epic Account Services
-    description: >-
-      Epic Account Services provides OAuth 2.0 / OIDC sign-in with an Epic
-      Account, exposing user identity, display name, country, preferred
-      language, and linked-account information to integrating games and
-      tools. It powers cross-platform Epic login and is the identity layer
-      underneath EOS Auth.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://dev.epicgames.com/docs/epic-account-services
-    baseURL: https://api.epicgames.dev
-    tags:
-      - Authentication
-      - Identity
-      - OAuth
-      - OIDC
-      - SSO
-    properties:
-      - type: Documentation
-        url: https://dev.epicgames.com/docs/epic-account-services
-      - type: Authentication
-        url: https://dev.epicgames.com/docs/epic-account-services/auth-interface
-  - aid: epic-games:epic-games-store-publishing
-    name: Epic Games Store Publishing
-    description: >-
-      The Epic Games Store publishing surface lets developers upload builds,
-      configure store pages, manage offers, run sales, and integrate with
-      EOS achievements and entitlements. Publishing tools include the
-      BuildPatchTool / EOS SDK Tool for uploading builds and a developer
-      portal for managing products. There is no fully self-serve public REST
-      Store API; publishing is gated through Epic's onboarding.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://dev.epicgames.com/en-US/store
-    baseURL: https://dev.epicgames.com
-    tags:
-      - Builds
-      - Entitlements
-      - Publishing
-      - Store
-    properties:
-      - type: Portal
-        url: https://dev.epicgames.com/en-US/store
-      - type: Documentation
-        url: https://dev.epicgames.com/docs/epic-games-store
-  - aid: epic-games:kids-web-services
-    name: Kids Web Services (KWS)
-    description: >-
-      Kids Web Services is Epic's compliance and parental-verification
-      platform for games and online services that handle children's data.
-      KWS exposes REST APIs and an SDK for age verification, parental
-      consent collection (COPPA, GDPR-K, age-appropriate design code),
-      account linking, and consent revocation flows.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://kidswebservices.com
-    baseURL: https://kidswebservices.com
-    tags:
-      - COPPA
-      - Compliance
-      - GDPR-K
-      - Kids
-      - Parental Consent
-      - Privacy
-    properties:
-      - type: Portal
-        url: https://kidswebservices.com
-      - type: Documentation
-        url: https://docs.kidswebservices.com
-  - aid: epic-games:unreal-engine-pointer
-    name: Unreal Engine (Pointer)
-    description: >-
-      Unreal Engine is profiled separately. See the unreal-engine entry for
-      Unreal SDK / Plugin / Pixel Streaming / RHI / Online Subsystem details.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://www.unrealengine.com
-    baseURL: https://www.unrealengine.com
-    tags:
-      - Game Engine
-      - SDK
-      - Unreal Engine
-    properties:
-      - type: SisterEntry
-        url: https://github.com/api-evangelist/unreal-engine
+  properties:
+  - type: Portal
+    url: https://dev.epicgames.com
+  - type: Documentation
+    url: https://dev.epicgames.com/docs/epic-online-services
+  - type: GettingStarted
+    url: https://dev.epicgames.com/docs/epic-online-services/eos-get-started
+  - type: SDK
+    url: https://dev.epicgames.com/docs/epic-online-services/platform-sdks
+  - type: WebAPI
+    url: https://dev.epicgames.com/docs/web-api-ref
+  - url: graphql/epic-games-graphql.md
+    type: GraphQL
+- aid: epic-games:epic-account-services
+  name: Epic Account Services
+  description: Epic Account Services provides OAuth 2.0 / OIDC sign-in with an Epic
+    Account, exposing user identity, display name, country, preferred language, and
+    linked-account information to integrating games and tools. It powers cross-platform
+    Epic login and is the identity layer underneath EOS Auth.
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://dev.epicgames.com/docs/epic-account-services
+  baseURL: https://api.epicgames.dev
+  tags:
+  - Authentication
+  - Identity
+  - OAuth
+  - OIDC
+  - SSO
+  properties:
+  - type: Documentation
+    url: https://dev.epicgames.com/docs/epic-account-services
+  - type: Authentication
+    url: https://dev.epicgames.com/docs/epic-account-services/auth-interface
+- aid: epic-games:epic-games-store-publishing
+  name: Epic Games Store Publishing
+  description: The Epic Games Store publishing surface lets developers upload builds,
+    configure store pages, manage offers, run sales, and integrate with EOS achievements
+    and entitlements. Publishing tools include the BuildPatchTool / EOS SDK Tool for
+    uploading builds and a developer portal for managing products. There is no fully
+    self-serve public REST Store API; publishing is gated through Epic's onboarding.
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://dev.epicgames.com/en-US/store
+  baseURL: https://dev.epicgames.com
+  tags:
+  - Builds
+  - Entitlements
+  - Publishing
+  - Store
+  properties:
+  - type: Portal
+    url: https://dev.epicgames.com/en-US/store
+  - type: Documentation
+    url: https://dev.epicgames.com/docs/epic-games-store
+- aid: epic-games:kids-web-services
+  name: Kids Web Services (KWS)
+  description: Kids Web Services is Epic's compliance and parental-verification platform
+    for games and online services that handle children's data. KWS exposes REST APIs
+    and an SDK for age verification, parental consent collection (COPPA, GDPR-K, age-appropriate
+    design code), account linking, and consent revocation flows.
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://kidswebservices.com
+  baseURL: https://kidswebservices.com
+  tags:
+  - COPPA
+  - Compliance
+  - GDPR-K
+  - Kids
+  - Parental Consent
+  - Privacy
+  properties:
+  - type: Portal
+    url: https://kidswebservices.com
+  - type: Documentation
+    url: https://docs.kidswebservices.com
+- aid: epic-games:unreal-engine-pointer
+  name: Unreal Engine (Pointer)
+  description: Unreal Engine is profiled separately. See the unreal-engine entry for
+    Unreal SDK / Plugin / Pixel Streaming / RHI / Online Subsystem details.
+  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://www.unrealengine.com
+  baseURL: https://www.unrealengine.com
+  tags:
+  - Game Engine
+  - SDK
+  - Unreal Engine
+  properties:
+  - type: SisterEntry
+    url: https://github.com/api-evangelist/unreal-engine
 common:
-  - url: https://www.epicgames.com
-    name: Epic Games Website
-    type: Website
-  - url: https://store.epicgames.com
-    name: Epic Games Store
-    type: Store
-  - url: https://dev.epicgames.com
-    name: Epic Developer Portal
-    type: Portal
-  - url: https://dev.epicgames.com/docs
-    name: Epic Developer Documentation
-    type: Documentation
-  - url: https://dev.epicgames.com/community
-    name: Epic Developer Community
-    type: Community
-  - url: https://dev.epicgames.com/docs/web-api-ref
-    name: EOS Web API Reference
-    type: APIReference
-  - url: https://dev.epicgames.com/docs/epic-online-services/eos-get-started
-    name: EOS Getting Started
-    type: GettingStarted
-  - url: https://dev.epicgames.com/docs/services/en-US/Tutorials
-    name: EOS Tutorials
-    type: Tutorials
-  - url: https://github.com/EpicGames
-    name: Epic Games on GitHub
-    type: GitHubOrganization
-  - url: https://status.epicgames.com
-    name: Epic Games Status
-    type: Status
-  - url: https://www.epicgames.com/help
-    name: Epic Games Help
-    type: Support
-  - url: https://www.unrealengine.com/blog
-    name: Unreal Engine Blog
-    type: Blog
-  - url: https://store.epicgames.com/en-US/eula
-    name: Epic Games Store EULA
-    type: TermsOfService
-  - url: https://www.epicgames.com/site/en-US/privacypolicy
-    name: Epic Games Privacy Policy
-    type: PrivacyPolicy
-  - url: https://www.epicgames.com/site/en-US/eula
-    name: Epic Games EULA
-    type: TermsOfService
-  - url: https://x.com/EpicGames
-    name: Epic Games on X
-    type: X
-  - url: https://www.facebook.com/epicgames
-    name: Epic Games on Facebook
-    type: Facebook
-  - url: https://www.linkedin.com/company/epic-games
-    name: Epic Games on LinkedIn
-    type: LinkedIn
-  - url: https://www.youtube.com/@epic
-    name: Epic Games on YouTube
-    type: YouTube
+- url: https://www.epicgames.com
+  name: Epic Games Website
+  type: Website
+- url: https://store.epicgames.com
+  name: Epic Games Store
+  type: Store
+- url: https://dev.epicgames.com
+  name: Epic Developer Portal
+  type: Portal
+- url: https://dev.epicgames.com/docs
+  name: Epic Developer Documentation
+  type: Documentation
+- url: https://dev.epicgames.com/community
+  name: Epic Developer Community
+  type: Community
+- url: https://dev.epicgames.com/docs/web-api-ref
+  name: EOS Web API Reference
+  type: APIReference
+- url: https://dev.epicgames.com/docs/epic-online-services/eos-get-started
+  name: EOS Getting Started
+  type: GettingStarted
+- url: https://dev.epicgames.com/docs/services/en-US/Tutorials
+  name: EOS Tutorials
+  type: Tutorials
+- url: https://github.com/EpicGames
+  name: Epic Games on GitHub
+  type: GitHubOrganization
+- url: https://status.epicgames.com
+  name: Epic Games Status
+  type: Status
+- url: https://www.epicgames.com/help
+  name: Epic Games Help
+  type: Support
+- url: https://www.unrealengine.com/blog
+  name: Unreal Engine Blog
+  type: Blog
+- url: https://store.epicgames.com/en-US/eula
+  name: Epic Games Store EULA
+  type: TermsOfService
+- url: https://www.epicgames.com/site/en-US/privacypolicy
+  name: Epic Games Privacy Policy
+  type: PrivacyPolicy
+- url: https://www.epicgames.com/site/en-US/eula
+  name: Epic Games EULA
+  type: TermsOfService
+- url: https://x.com/EpicGames
+  name: Epic Games on X
+  type: X
+- url: https://www.facebook.com/epicgames
+  name: Epic Games on Facebook
+  type: Facebook
+- url: https://www.linkedin.com/company/epic-games
+  name: Epic Games on LinkedIn
+  type: LinkedIn
+- url: https://www.youtube.com/@epic
+  name: Epic Games on YouTube
+  type: YouTube
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

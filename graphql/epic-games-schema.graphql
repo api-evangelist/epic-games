@@ -1,0 +1,835 @@
+"""
+Epic Games / Epic Online Services (EOS) — Representative GraphQL Schema
+Covers: Identity, Social, Sessions, Lobbies, Commerce, Progression, Integrity, Voice
+Sources: EOS Web API Reference, EOS SDK docs, EGS catalog surface, partner documentation
+Endpoint note: https://graphql.epicgames.com/graphql returned HTTP 410 during probing (2026-06-14).
+This schema is reconstructed from public EOS documentation and SDK type definitions.
+"""
+
+# ─── Scalars ────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+scalar URL
+scalar BigInt
+
+# ─── Enums ──────────────────────────────────────────────────────────────────
+
+enum ExternalAccountType {
+  STEAM
+  PSN
+  XBL
+  NINTENDO
+  EPIC
+  APPLE
+  GOOGLE
+  DISCORD
+  GOG
+  ITCH
+}
+
+enum FriendStatusType {
+  NOT_FRIENDS
+  FRIENDS
+  INVITE_SENT
+  INVITE_RECEIVED
+  BLOCKED
+}
+
+enum SessionJoinPolicy {
+  PUBLIC
+  NO_ADVERTISEMENT
+  INVITE_ONLY
+  CLOSED
+}
+
+enum SessionPermissionLevel {
+  PUBLIC_ADVERTISED
+  JOIN_VIA_PRESENCE
+  INVITE_ONLY
+}
+
+enum LobbyPermissionLevel {
+  PUBLIC
+  JOIN_VIA_PRESENCE
+  INVITE_ONLY
+}
+
+enum OfferType {
+  GAME
+  ADD_ON
+  BUNDLE
+  SEASON_PASS
+  DLC
+  VIRTUAL_CURRENCY
+  SUBSCRIPTION
+}
+
+enum ItemStatus {
+  ACTIVE
+  SUNSET
+  DEPRECATED
+  DRAFT
+}
+
+enum TournamentStatus {
+  PENDING
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum VoiceChatStatus {
+  CONNECTED
+  DISCONNECTED
+  MUTED
+  SPEAKING
+}
+
+enum AntiCheatTrustLevel {
+  TRUSTED
+  SEMI_TRUSTED
+  UNTRUSTED
+}
+
+enum SanctionStatus {
+  ACTIVE
+  EXPIRED
+  APPEALED
+  OVERTURNED
+}
+
+enum PresenceStatus {
+  ONLINE
+  OFFLINE
+  AWAY
+  DO_NOT_DISTURB
+  EXTENDED_AWAY
+}
+
+enum PlatformType {
+  WINDOWS
+  MACOS
+  LINUX
+  PLAYSTATION
+  XBOX
+  NINTENDO_SWITCH
+  IOS
+  ANDROID
+  WEB
+}
+
+# ─── Identity & Accounts ────────────────────────────────────────────────────
+
+"""A single Epic Account with display name and linked external accounts."""
+type PlayerAccount {
+  accountId: ID!
+  displayName: String!
+  preferredLanguage: String
+  country: String
+  cabinedMode: Boolean
+  externalAccounts: [ExternalAccount!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""An account on an external platform (Steam, PSN, XBL, etc.) linked to an Epic Account."""
+type ExternalAccount {
+  accountId: ID!
+  type: ExternalAccountType!
+  externalAccountId: String!
+  displayName: String
+  lastSeenAt: DateTime
+}
+
+"""A Connect identity — a lightweight EOS identity not requiring an Epic Account."""
+type Player {
+  productUserId: ID!
+  account: PlayerAccount
+  externalAccounts: [ExternalAccount!]!
+  displayName: String
+  platform: PlatformType
+  createdAt: DateTime!
+  lastActiveAt: DateTime
+}
+
+"""Mapping between a Connect ProductUserId and an Epic AccountId."""
+type AccountMapping {
+  productUserId: ID!
+  epicAccountId: ID
+  externalType: ExternalAccountType
+  externalId: String
+}
+
+"""OAuth access token response."""
+type AccessToken {
+  accessToken: String!
+  tokenType: String!
+  expiresIn: Int!
+  expiresAt: DateTime!
+  refreshToken: String
+  refreshExpiresIn: Int
+  accountId: ID
+  clientId: ID!
+  scope: String
+}
+
+"""Token request parameters for client credentials or authorization code flows."""
+type TokenRequest {
+  grantType: String!
+  clientId: ID!
+  scope: String
+  code: String
+  redirectUri: URL
+}
+
+# ─── Social ─────────────────────────────────────────────────────────────────
+
+"""Friend status between two players."""
+type FriendStatus {
+  accountId: ID!
+  friend: PlayerAccount!
+  status: FriendStatusType!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  mutualFriendsCount: Int
+  nickname: String
+}
+
+"""Full friends list for a player."""
+type Friends {
+  accountId: ID!
+  friends: [FriendStatus!]!
+  totalCount: Int!
+  incomingInvites: [FriendStatus!]!
+  outgoingInvites: [FriendStatus!]!
+}
+
+"""A block relationship between two players."""
+type Block {
+  accountId: ID!
+  blockedAccountId: ID!
+  blockedAt: DateTime!
+}
+
+"""Peer-to-peer connection info for a player."""
+type Peer {
+  productUserId: ID!
+  natType: String
+  address: String
+  port: Int
+  relayAddress: String
+}
+
+"""Presence / rich status for a player."""
+type Presence {
+  accountId: ID!
+  status: PresenceStatus!
+  richText: String
+  platform: PlatformType
+  gameTitle: String
+  gameplayData: JSON
+  lastUpdatedAt: DateTime!
+}
+
+# ─── Sessions ───────────────────────────────────────────────────────────────
+
+"""An EOS Session — a matchmade or manually created multiplayer session."""
+type Session {
+  sessionId: ID!
+  sessionName: String!
+  bucketId: String
+  maxPlayers: Int!
+  currentPlayers: Int!
+  allowNewMembers: Boolean!
+  allowedPlatforms: [PlatformType!]
+  joinPolicy: SessionJoinPolicy!
+  permissionLevel: SessionPermissionLevel!
+  attributes: JSON
+  members: [SessionMember!]!
+  hostProductUserId: ID!
+  createdAt: DateTime!
+  expiresAt: DateTime
+}
+
+"""A member inside an EOS Session."""
+type SessionMember {
+  productUserId: ID!
+  player: Player
+  attributes: JSON
+  joinedAt: DateTime!
+  isHost: Boolean!
+}
+
+# ─── Lobbies ────────────────────────────────────────────────────────────────
+
+"""An EOS Lobby — a persistent group room with owner-controlled attributes."""
+type Lobby {
+  lobbyId: ID!
+  bucketId: String
+  maxMembers: Int!
+  permissionLevel: LobbyPermissionLevel!
+  attributes: [LobbyAttribute!]!
+  members: [LobbyMember!]!
+  ownerProductUserId: ID!
+  allowInvites: Boolean!
+  rejoinAfterKick: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A member inside an EOS Lobby."""
+type LobbyMember {
+  productUserId: ID!
+  player: Player
+  attributes: [LobbyAttribute!]!
+  joinedAt: DateTime!
+  isOwner: Boolean!
+  isPending: Boolean!
+}
+
+"""A key/value attribute attached to a Lobby or LobbyMember."""
+type LobbyAttribute {
+  key: String!
+  valueType: String!
+  valueString: String
+  valueInt: Int
+  valueBool: Boolean
+  valueDouble: Float
+  visibility: String
+}
+
+# ─── Progression ────────────────────────────────────────────────────────────
+
+"""A player stat recorded by EOS Stats Interface."""
+type PlayerStats {
+  productUserId: ID!
+  statName: String!
+  value: BigInt!
+  startTime: DateTime
+  endTime: DateTime
+}
+
+"""An achievement definition from EOS Achievements Interface."""
+type Achievement {
+  achievementId: ID!
+  name: String!
+  description: String!
+  lockedDescription: String
+  isHidden: Boolean!
+  flavorText: String
+  iconUrl: URL
+  lockedIconUrl: URL
+  completionPercent: Float
+  statThresholds: [AchievementStatThreshold!]
+}
+
+"""Threshold linking a stat to an achievement."""
+type AchievementStatThreshold {
+  statName: String!
+  threshold: BigInt!
+}
+
+"""A player's unlock record for a single achievement."""
+type PlayerAchievement {
+  productUserId: ID!
+  achievement: Achievement!
+  progress: Float!
+  unlocked: Boolean!
+  unlockedAt: DateTime
+}
+
+"""A leaderboard definition."""
+type Leaderboard {
+  leaderboardId: ID!
+  statName: String!
+  aggregationType: String!
+  startTime: DateTime
+  endTime: DateTime
+}
+
+"""A single entry in a leaderboard."""
+type LeaderboardEntry {
+  rank: Int!
+  score: BigInt!
+  productUserId: ID!
+  player: Player
+}
+
+# ─── Matches ────────────────────────────────────────────────────────────────
+
+"""A completed match record."""
+type Match {
+  matchId: ID!
+  bucketId: String
+  sessionId: ID
+  startedAt: DateTime!
+  endedAt: DateTime
+  stats: [MatchStat!]!
+  players: [Player!]!
+  winnerId: ID
+}
+
+"""A per-player, per-match statistic."""
+type MatchStat {
+  productUserId: ID!
+  statName: String!
+  value: BigInt!
+}
+
+# ─── Commerce & Store ────────────────────────────────────────────────────────
+
+"""An EOS/EGS catalog item."""
+type CatalogItem {
+  id: ID!
+  title: String!
+  description: String!
+  longDescription: String
+  offerType: OfferType!
+  status: ItemStatus!
+  namespace: String!
+  categories: [String!]
+  keyImages: [KeyImage!]
+  releaseInfo: [EGSRelease!]
+  developer: String
+  developerDisplayName: String
+  endOfSupport: Boolean
+  unsearchable: Boolean
+  requiresSecureAccount: Boolean
+  createdAt: DateTime!
+  lastModifiedAt: DateTime!
+}
+
+"""An image asset attached to a catalog item."""
+type KeyImage {
+  type: String!
+  url: URL!
+  md5: String
+  width: Int
+  height: Int
+  size: BigInt
+  uploadedDate: DateTime
+}
+
+"""A store offer wrapping a catalog item with pricing."""
+type StoreOffer {
+  id: ID!
+  namespace: String!
+  title: String!
+  description: String
+  offerType: OfferType!
+  expiryDate: DateTime
+  status: ItemStatus!
+  isCodeRedemptionOnly: Boolean
+  price: ItemPrice!
+  items: [CatalogItem!]!
+  promotions: OfferPromotions
+  categories: [String!]
+  tags: [OfferTag!]
+  seller: Seller
+  urlSlug: String
+  url: URL
+  productSlug: String
+}
+
+"""Pricing info for an offer."""
+type ItemPrice {
+  currencyCode: String!
+  discount: Int
+  discountPrice: Int
+  originalPrice: Int
+  voucherDiscount: Int
+  fmtPrice: FormattedPrice
+}
+
+"""Human-readable formatted price."""
+type FormattedPrice {
+  originalPrice: String!
+  discountPrice: String!
+  intermediatePrice: String!
+}
+
+"""Promotion metadata attached to an offer."""
+type OfferPromotions {
+  promotionalOffers: [PromotionalOffer!]
+  upcomingPromotionalOffers: [PromotionalOffer!]
+}
+
+"""A time-bounded promotional discount."""
+type PromotionalOffer {
+  promotionalOffers: [PromotionDetail!]!
+}
+
+"""Detail of a single promotional discount."""
+type PromotionDetail {
+  startDate: DateTime!
+  endDate: DateTime!
+  discountSetting: DiscountSetting!
+}
+
+"""Discount configuration."""
+type DiscountSetting {
+  discountType: String!
+  discountPercentage: Float
+}
+
+"""A tag applied to a store offer."""
+type OfferTag {
+  id: ID!
+  groupName: String
+  name: String!
+}
+
+"""A seller/publisher on the Epic Games Store."""
+type Seller {
+  id: ID!
+  name: String!
+}
+
+"""A top-level product on the Epic Games Store."""
+type StoreProduct {
+  productId: ID!
+  name: String!
+  slug: String!
+  offers: [StoreOffer!]!
+  releaseDate: DateTime
+  developer: String
+  publisher: String
+  platforms: [PlatformType!]
+  categories: [String!]
+  heroImageUrl: URL
+  thumbnailUrl: URL
+}
+
+"""A downloadable content product."""
+type DLCProduct {
+  id: ID!
+  parentProductId: ID!
+  name: String!
+  description: String
+  offers: [StoreOffer!]!
+}
+
+"""A bundle product containing multiple items."""
+type StoreBundleItem {
+  bundleId: ID!
+  name: String!
+  description: String
+  items: [CatalogItem!]!
+  price: ItemPrice!
+}
+
+"""An EGS game asset (build artifact)."""
+type EGSAsset {
+  appName: String!
+  assetId: ID!
+  namespace: String!
+  catalogItemId: ID!
+  buildVersion: String
+  labelName: String
+  metadata: JSON
+}
+
+"""Release information for a catalog item."""
+type EGSRelease {
+  id: ID!
+  appId: String!
+  platform: [String!]!
+  dateAdded: DateTime
+  releaseNote: String
+}
+
+"""A specific build version of an EGS game."""
+type EGSBuild {
+  buildId: ID!
+  appName: String!
+  version: String!
+  platform: PlatformType!
+  manifestUrl: URL
+  labelName: String
+  createdAt: DateTime!
+}
+
+"""A game title listing on the EGS (top-level view)."""
+type EGSGame {
+  id: ID!
+  title: String!
+  namespace: String!
+  slug: String
+  developer: String
+  categories: [String!]
+  offerMappings: [StoreOffer!]
+  productSlug: String
+  pageSlug: String
+  urlSlug: String
+}
+
+# ─── Entitlements ────────────────────────────────────────────────────────────
+
+"""An entitlement owned by a player (EOS Ecom)."""
+type UserEntitlement {
+  entitlementId: ID!
+  entitlementName: String!
+  accountId: ID!
+  catalogItemId: ID!
+  namespace: String!
+  active: Boolean!
+  consumable: Boolean!
+  useCount: Int
+  entitlementType: String
+  grantDate: DateTime!
+  endDate: DateTime
+}
+
+"""Ownership check result for a catalog item."""
+type ItemOwnership {
+  id: ID!
+  owned: Boolean!
+  accountId: ID!
+  catalogItemId: ID!
+  namespace: String!
+}
+
+# ─── Voice ───────────────────────────────────────────────────────────────────
+
+"""A voice chat room created by the EOS Voice Interface."""
+type VoiceChatRoom {
+  roomId: ID!
+  roomName: String!
+  clientBaseUrl: URL
+  participants: [VoiceChatParticipant!]!
+  createdAt: DateTime!
+}
+
+"""A participant in a voice chat room."""
+type VoiceChatParticipant {
+  productUserId: ID!
+  player: Player
+  status: VoiceChatStatus!
+  isTalking: Boolean!
+  joinedAt: DateTime!
+  audioOutputStatus: String
+}
+
+# ─── Tournaments ─────────────────────────────────────────────────────────────
+
+"""A tournament definition (e.g. Fortnite Champion Series)."""
+type Tournament {
+  tournamentId: ID!
+  title: String!
+  scheduledBeginTime: DateTime!
+  scheduledEndTime: DateTime!
+  status: TournamentStatus!
+  maxSessions: Int
+  matchesPerSession: Int
+  teamSize: Int
+  region: String
+  windowCount: Int
+  backgroundTextureKey: String
+  titleTextureKey: String
+  bracketType: String
+  teams: [TournamentTeam!]
+  standings: [TournamentStanding!]
+}
+
+"""A team participating in a tournament."""
+type TournamentTeam {
+  teamId: ID!
+  name: String
+  members: [Player!]!
+}
+
+"""A match within a tournament."""
+type TournamentMatch {
+  matchId: ID!
+  tournamentId: ID!
+  sessionId: ID
+  startedAt: DateTime!
+  endedAt: DateTime
+  participants: [Player!]!
+  results: [TournamentMatchResult!]
+}
+
+"""Result for one player/team in a tournament match."""
+type TournamentMatchResult {
+  productUserId: ID!
+  placement: Int!
+  score: BigInt!
+}
+
+"""A standing (leaderboard position) within a tournament."""
+type TournamentStanding {
+  rank: Int!
+  score: BigInt!
+  teamId: ID
+  productUserId: ID
+  player: Player
+}
+
+# ─── Integrity ───────────────────────────────────────────────────────────────
+
+"""An anti-cheat registration ticket for a game session."""
+type AntiCheatTicket {
+  clientHandle: String!
+  sessionId: ID
+  productUserId: ID!
+  trustedLevel: AntiCheatTrustLevel!
+  platform: PlatformType
+  issuedAt: DateTime!
+  expiresAt: DateTime
+}
+
+"""A sanction (ban/restriction) applied to a player."""
+type Sanction {
+  referenceId: ID!
+  accountId: ID!
+  action: String!
+  justification: String
+  source: String
+  tags: [String!]
+  status: SanctionStatus!
+  deploymentId: ID
+  createdAt: DateTime!
+  expiresAt: DateTime
+}
+
+"""A player report filed by another player."""
+type PlayerReport {
+  reportId: ID!
+  reportingProductUserId: ID!
+  reportedProductUserId: ID!
+  category: String!
+  message: String
+  context: JSON
+  reportedAt: DateTime!
+}
+
+# ─── Platform Integrations ───────────────────────────────────────────────────
+
+"""Steam integration configuration for a deployment."""
+type SteamIntegration {
+  deploymentId: ID!
+  steamAppId: String!
+  serverKey: String
+  antiCheatEnabled: Boolean!
+}
+
+"""Mod SDK configuration for a game."""
+type ModSDK {
+  gameId: ID!
+  modSdkEnabled: Boolean!
+  allowedModNamespaces: [String!]
+  modReviewRequired: Boolean
+}
+
+# ─── Queries ─────────────────────────────────────────────────────────────────
+
+type Query {
+  # Identity
+  player(productUserId: ID!): Player
+  playerAccount(accountId: ID!): PlayerAccount
+  accountMapping(productUserId: ID!): AccountMapping
+  externalAccount(type: ExternalAccountType!, externalId: String!): ExternalAccount
+
+  # Social
+  friends(accountId: ID!): Friends
+  friendStatus(accountId: ID!, friendAccountId: ID!): FriendStatus
+  blocks(accountId: ID!): [Block!]!
+  presence(accountId: ID!): Presence
+
+  # Sessions
+  session(sessionId: ID!): Session
+  sessions(bucketId: String, maxResults: Int): [Session!]!
+
+  # Lobbies
+  lobby(lobbyId: ID!): Lobby
+  lobbies(bucketId: String, maxResults: Int): [Lobby!]!
+
+  # Progression
+  playerStats(productUserId: ID!, statNames: [String!]): [PlayerStats!]!
+  achievement(achievementId: ID!): Achievement
+  achievements(namespace: String!): [Achievement!]!
+  playerAchievements(productUserId: ID!): [PlayerAchievement!]!
+  leaderboard(leaderboardId: ID!): Leaderboard
+  leaderboardEntries(leaderboardId: ID!, maxResults: Int, targetProductUserId: ID): [LeaderboardEntry!]!
+
+  # Matches
+  match(matchId: ID!): Match
+
+  # Commerce
+  catalogItem(namespace: String!, id: ID!): CatalogItem
+  storeOffer(namespace: String!, id: ID!): StoreOffer
+  storeProduct(productId: ID!): StoreProduct
+  egsGame(id: ID!): EGSGame
+  egsGames(category: String, count: Int, country: String, locale: String): [EGSGame!]!
+  freeGames(country: String, locale: String): [StoreOffer!]!
+
+  # Entitlements
+  userEntitlements(accountId: ID!, namespace: String): [UserEntitlement!]!
+  itemOwnership(accountId: ID!, catalogItemId: ID!, namespace: String!): ItemOwnership
+
+  # Voice
+  voiceChatRoom(roomId: ID!): VoiceChatRoom
+
+  # Tournaments
+  tournament(tournamentId: ID!): Tournament
+  tournaments(region: String, status: TournamentStatus): [Tournament!]!
+  tournamentStandings(tournamentId: ID!, maxResults: Int): [TournamentStanding!]!
+
+  # Integrity
+  sanction(accountId: ID!): [Sanction!]!
+}
+
+# ─── Mutations ───────────────────────────────────────────────────────────────
+
+type Mutation {
+  # Social
+  sendFriendInvite(accountId: ID!, targetAccountId: ID!): FriendStatus
+  acceptFriendInvite(accountId: ID!, friendAccountId: ID!): FriendStatus
+  rejectFriendInvite(accountId: ID!, friendAccountId: ID!): Boolean
+  removeFriend(accountId: ID!, friendAccountId: ID!): Boolean
+  blockPlayer(accountId: ID!, targetAccountId: ID!): Block
+  unblockPlayer(accountId: ID!, targetAccountId: ID!): Boolean
+
+  # Sessions
+  createSession(hostProductUserId: ID!, maxPlayers: Int!, bucketId: String, attributes: JSON): Session
+  updateSession(sessionId: ID!, attributes: JSON, maxPlayers: Int): Session
+  destroySession(sessionId: ID!): Boolean
+  joinSession(sessionId: ID!, productUserId: ID!): SessionMember
+  leaveSession(sessionId: ID!, productUserId: ID!): Boolean
+
+  # Lobbies
+  createLobby(ownerProductUserId: ID!, maxMembers: Int!, permissionLevel: LobbyPermissionLevel, attributes: [LobbyAttributeInput!]): Lobby
+  updateLobby(lobbyId: ID!, attributes: [LobbyAttributeInput!], maxMembers: Int, permissionLevel: LobbyPermissionLevel): Lobby
+  destroyLobby(lobbyId: ID!): Boolean
+  joinLobby(lobbyId: ID!, productUserId: ID!): LobbyMember
+  leaveLobby(lobbyId: ID!, productUserId: ID!): Boolean
+  kickLobbyMember(lobbyId: ID!, targetProductUserId: ID!): Boolean
+
+  # Progression
+  ingestStat(productUserId: ID!, statName: String!, value: BigInt!, startTime: DateTime, endTime: DateTime): PlayerStats
+
+  # Entitlements
+  consumeEntitlement(entitlementId: ID!, useCount: Int): UserEntitlement
+
+  # Voice
+  createVoiceChatRoom(roomName: String!, deploymentId: ID!): VoiceChatRoom
+  joinVoiceChatRoom(roomId: ID!, productUserId: ID!): VoiceChatParticipant
+  leaveVoiceChatRoom(roomId: ID!, productUserId: ID!): Boolean
+  muteParticipant(roomId: ID!, targetProductUserId: ID!): VoiceChatParticipant
+
+  # Integrity
+  reportPlayer(reportingProductUserId: ID!, reportedProductUserId: ID!, category: String!, message: String, context: JSON): PlayerReport
+}
+
+# ─── Input Types ─────────────────────────────────────────────────────────────
+
+input LobbyAttributeInput {
+  key: String!
+  valueType: String!
+  valueString: String
+  valueInt: Int
+  valueBool: Boolean
+  valueDouble: Float
+  visibility: String
+}

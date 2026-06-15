@@ -1,0 +1,486 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Epic Online Services Web API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.epicgames.dev/auth/v1/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an OAuth 2.0 access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.epicgames.dev/auth/v1/oauth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "code",
+                  "value": ""
+                },
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                },
+                {
+                  "name": "deployment_id",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Exchange client credentials, an authorization code, an exchange code, a refresh token, or a device-code grant for an EOS access token."
+        },
+        {
+          "info": {
+            "name": "Verify an OAuth access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/auth/v1/oauth/verify"
+          },
+          "docs": "Verify an OAuth access token"
+        },
+        {
+          "info": {
+            "name": "Revoke an OAuth token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.epicgames.dev/auth/v1/oauth/revoke",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "token",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Revoke an OAuth token"
+        },
+        {
+          "info": {
+            "name": "Get Epic account info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/auth/v1/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Epic account info"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connect",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Look up product user IDs for external accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/connect/v1/:deploymentId/users",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "externalAccountType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "externalAccountId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Look up product user IDs for external accounts"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PlayerDataStorage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download a player data file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/player-data-storage/v1/:deploymentId/file/:filename",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a player data file"
+        },
+        {
+          "info": {
+            "name": "Upload a player data file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.epicgames.dev/player-data-storage/v1/:deploymentId/file/:filename",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Upload a player data file"
+        },
+        {
+          "info": {
+            "name": "Delete a player data file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.epicgames.dev/player-data-storage/v1/:deploymentId/file/:filename",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a player data file"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TitleStorage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download a title storage file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/title-storage/v1/:deploymentId/file/:filename",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a title storage file"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List stats for a product user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/stats/v1/:deploymentId/users/:productUserId/stats",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "productUserId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List stats for a product user"
+        },
+        {
+          "info": {
+            "name": "Ingest stats for a product user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.epicgames.dev/stats/v1/:deploymentId/users/:productUserId/stats",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "productUserId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ingest stats for a product user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Achievements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List achievement definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/achievements/v2/:deploymentId/definitions",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List achievement definitions"
+        },
+        {
+          "info": {
+            "name": "List player achievements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/achievements/v2/:deploymentId/users/:productUserId/achievements",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "productUserId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List player achievements"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Leaderboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List leaderboard definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/leaderboards/v1/:deploymentId/definitions",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List leaderboard definitions"
+        },
+        {
+          "info": {
+            "name": "Get leaderboard ranks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/leaderboards/v1/:deploymentId/leaderboard/:leaderboardId/ranks",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "leaderboardId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get leaderboard ranks"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sanctions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query player sanctions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/sanctions/v1/:deploymentId/sanctions",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetUserId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query player sanctions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ecom",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List entitlements for an Epic account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/ecom/v1/identities/:accountId/entitlements",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List entitlements for an Epic account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -63,7 +63,7 @@ apis:
     url: https://dev.epicgames.com/docs/epic-online-services
   - type: GettingStarted
     url: https://dev.epicgames.com/docs/epic-online-services/eos-get-started
-  - type: SDK
+  - type: SDKs
     url: https://dev.epicgames.com/docs/epic-online-services/platform-sdks
   - type: WebAPI
     url: https://dev.epicgames.com/docs/web-api-ref

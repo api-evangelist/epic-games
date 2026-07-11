@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/epic-games-openapi.yml
+schemes:
+- name: oauthClientCredentials
+  source: openapi/epic-games-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.epicgames.dev/auth/v1/oauth/token
+scopes:
+- scope: basic_profile
+  description: Basic profile access
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/epic-games-openapi.yml

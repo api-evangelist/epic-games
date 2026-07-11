@@ -145,6 +145,8 @@ apis:
   - type: SisterEntry
     url: https://github.com/api-evangelist/unreal-engine
 common:
+- type: OAuthScopes
+  url: scopes/epic-games-scopes.yml
 - url: https://www.epicgames.com
   name: Epic Games Website
   type: Website

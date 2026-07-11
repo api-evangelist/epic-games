@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.epicgames.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 18 01:27:43 2026 GMT
+  hsts: null
+- host: dev.epicgames.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 18 01:58:57 2026 GMT
+  hsts: false
+- host: api.epicgames.dev
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 19 17:29:26 2026 GMT
+  hsts: null
+domains:
+- domain: epicgames.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: epicgames.dev
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

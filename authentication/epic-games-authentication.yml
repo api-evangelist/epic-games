@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/epic-games-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: oauthClientCredentials
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.epicgames.dev/auth/v1/oauth/token
+    scopes: 1
+  sources:
+  - openapi/epic-games-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: EOS bearer access token issued by the OAuth token endpoint.
+  sources:
+  - openapi/epic-games-openapi.yml

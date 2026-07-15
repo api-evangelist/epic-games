@@ -145,6 +145,8 @@ apis:
   - type: SisterEntry
     url: https://github.com/api-evangelist/unreal-engine
 common:
+- type: AgenticAccess
+  url: agentic-access/epic-games-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/epic-games-vulnerability-disclosure.yml
 - type: DomainSecurity

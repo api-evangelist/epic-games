@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Epic Online Services Web Achievements PlayerDataStorage API
+  version: 1.0.0
+  description: REST surface of Epic Online Services (EOS). Provides cross-platform game backend capabilities including OAuth-based authentication, the Connect Interface (product user ID exchange), Player Data and Title Storage, Achievements, Stats, Leaderboards, Friends, Lobby/Sessions, Sanctions, and Ecom entitlements. All requests are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal. Best-effort spec derived from publicly documented surfaces; not exhaustive.
+  contact:
+    name: Epic Online Services
+    url: https://dev.epicgames.com/docs/web-api-ref
+  license:
+    name: Proprietary
+servers:
+- url: https://api.epicgames.dev
+  description: Epic Online Services production base URL
+security:
+- oauthClientCredentials: []
+- bearerAuth: []
+tags:
+- name: PlayerDataStorage
+paths:
+  /player-data-storage/v1/{deploymentId}/file/{filename}:
+    parameters:
+    - in: path
+      name: deploymentId
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: filename
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - PlayerDataStorage
+      summary: Download a player data file
+      operationId: getPlayerDataFile
+      responses:
+        '200':
+          description: File content
+    put:
+      tags:
+      - PlayerDataStorage
+      summary: Upload a player data file
+      operationId: putPlayerDataFile
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: File stored
+    delete:
+      tags:
+      - PlayerDataStorage
+      summary: Delete a player data file
+      operationId: deletePlayerDataFile
+      responses:
+        '204':
+          description: File deleted
+components:
+  securitySchemes:
+    oauthClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.epicgames.dev/auth/v1/oauth/token
+          scopes:
+            basic_profile: Basic profile access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: EOS bearer access token issued by the OAuth token endpoint.

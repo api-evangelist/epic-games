@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: Epic Online Services Web Achievements Auth API
+  version: 1.0.0
+  description: REST surface of Epic Online Services (EOS). Provides cross-platform game backend capabilities including OAuth-based authentication, the Connect Interface (product user ID exchange), Player Data and Title Storage, Achievements, Stats, Leaderboards, Friends, Lobby/Sessions, Sanctions, and Ecom entitlements. All requests are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal. Best-effort spec derived from publicly documented surfaces; not exhaustive.
+  contact:
+    name: Epic Online Services
+    url: https://dev.epicgames.com/docs/web-api-ref
+  license:
+    name: Proprietary
+servers:
+- url: https://api.epicgames.dev
+  description: Epic Online Services production base URL
+security:
+- oauthClientCredentials: []
+- bearerAuth: []
+tags:
+- name: Auth
+paths:
+  /auth/v1/oauth/token:
+    post:
+      tags:
+      - Auth
+      summary: Get an OAuth 2.0 access token
+      operationId: getOAuthToken
+      description: Exchange client credentials, an authorization code, an exchange code, a refresh token, or a device-code grant for an EOS access token.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                  - client_credentials
+                  - authorization_code
+                  - refresh_token
+                  - exchange_code
+                  - password
+                  - device_code
+                  - external_auth
+                code:
+                  type: string
+                refresh_token:
+                  type: string
+                deployment_id:
+                  type: string
+                scope:
+                  type: string
+      responses:
+        '200':
+          description: Access token issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  expires_in:
+                    type: integer
+                  token_type:
+                    type: string
+                  refresh_token:
+                    type: string
+                  account_id:
+                    type: string
+  /auth/v1/oauth/verify:
+    get:
+      tags:
+      - Auth
+      summary: Verify an OAuth access token
+      operationId: verifyOAuthToken
+      responses:
+        '200':
+          description: Token verification result
+  /auth/v1/oauth/revoke:
+    post:
+      tags:
+      - Auth
+      summary: Revoke an OAuth token
+      operationId: revokeOAuthToken
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - token
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          description: Token revoked
+  /auth/v1/accounts/{accountId}:
+    get:
+      tags:
+      - Auth
+      summary: Get Epic account info
+      operationId: getEpicAccount
+      parameters:
+      - in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Epic account record
+components:
+  securitySchemes:
+    oauthClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.epicgames.dev/auth/v1/oauth/token
+          scopes:
+            basic_profile: Basic profile access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: EOS bearer access token issued by the OAuth token endpoint.

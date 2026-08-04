@@ -1,0 +1,30 @@
+{
+  "provider": "epic-games",
+  "sources": [
+    "epic-games-achievements-api-openapi.yml",
+    "epic-games-auth-api-openapi.yml",
+    "epic-games-connect-api-openapi.yml",
+    "epic-games-ecom-api-openapi.yml",
+    "epic-games-leaderboards-api-openapi.yml",
+    "epic-games-playerdatastorage-api-openapi.yml",
+    "epic-games-sanctions-api-openapi.yml",
+    "epic-games-stats-api-openapi.yml",
+    "epic-games-titlestorage-api-openapi.yml"
+  ],
+  "outputs": [
+    "epic-games-achievements-api-openapi.yml",
+    "epic-games-auth-api-openapi.yml",
+    "epic-games-connect-api-openapi.yml",
+    "epic-games-ecom-api-openapi.yml",
+    "epic-games-leaderboards-api-openapi.yml",
+    "epic-games-playerdatastorage-api-openapi.yml",
+    "epic-games-sanctions-api-openapi.yml",
+    "epic-games-stats-api-openapi.yml",
+    "epic-games-titlestorage-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

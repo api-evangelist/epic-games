@@ -1,0 +1,152 @@
+{
+  "item": [
+    {
+      "id": "0c47dbb7-ab56-49fc-926c-4fd79bf534ec",
+      "name": "TitleStorage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2d96461-916b-4815-a713-40c5cee0b8fe",
+          "name": "Download a title storage file",
+          "request": {
+            "name": "Download a title storage file",
+            "description": {},
+            "url": {
+              "path": [
+                "title-storage",
+                "v1",
+                ":deploymentId",
+                "file",
+                ":filename"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deploymentId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd5940b8-62f5-45af-81a1-10f64f811c49",
+              "name": "File content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "title-storage",
+                    "v1",
+                    ":deploymentId",
+                    "file",
+                    ":filename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deploymentId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.epicgames.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "basic_profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.epicgames.dev/auth/v1/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b3491a77-a4af-477f-9416-e48667e6f2e5",
+    "name": "Epic Online Services Web Achievements TitleStorage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST surface of Epic Online Services (EOS). Provides cross-platform game backend capabilities including OAuth-based authentication, the Connect Interface (product user ID exchange), Player Data and Title Storage, Achievements, Stats, Leaderboards, Friends, Lobby/Sessions, Sanctions, and Ecom entitlements. All requests are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal. Best-effort spec derived from publicly documented surfaces; not exhaustive.\n\nContact Support:\n Name: Epic Online Services",
+      "type": "text/plain"
+    }
+  }
+}

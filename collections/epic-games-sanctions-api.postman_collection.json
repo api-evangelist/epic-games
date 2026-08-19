@@ -1,0 +1,147 @@
+{
+  "item": [
+    {
+      "id": "d989f3ee-9754-4421-b4ea-cb93e5be182a",
+      "name": "Sanctions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50561176-9970-4fc3-8b12-f30b99306de6",
+          "name": "Query player sanctions",
+          "request": {
+            "name": "Query player sanctions",
+            "description": {},
+            "url": {
+              "path": [
+                "sanctions",
+                "v1",
+                ":deploymentId",
+                "sanctions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "targetUserId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deploymentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7dac7b06-eb13-429c-99c3-636e5e4c9eeb",
+              "name": "Sanctions list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sanctions",
+                    "v1",
+                    ":deploymentId",
+                    "sanctions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "targetUserId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deploymentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.epicgames.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "basic_profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.epicgames.dev/auth/v1/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aeae4df1-9cfe-4175-ae7a-4cd42bdf5258",
+    "name": "Epic Online Services Web Achievements Sanctions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST surface of Epic Online Services (EOS). Provides cross-platform game backend capabilities including OAuth-based authentication, the Connect Interface (product user ID exchange), Player Data and Title Storage, Achievements, Stats, Leaderboards, Friends, Lobby/Sessions, Sanctions, and Ecom entitlements. All requests are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal. Best-effort spec derived from publicly documented surfaces; not exhaustive.\n\nContact Support:\n Name: Epic Online Services",
+      "type": "text/plain"
+    }
+  }
+}

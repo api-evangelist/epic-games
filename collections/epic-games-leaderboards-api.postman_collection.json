@@ -1,0 +1,252 @@
+{
+  "item": [
+    {
+      "id": "a9ff8992-d19c-449b-8076-6b0196202596",
+      "name": "Leaderboards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac044e0e-4285-459f-b400-7ccdeb92cc7d",
+          "name": "List leaderboard definitions",
+          "request": {
+            "name": "List leaderboard definitions",
+            "description": {},
+            "url": {
+              "path": [
+                "leaderboards",
+                "v1",
+                ":deploymentId",
+                "definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deploymentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "342c450d-5f23-471f-a1df-7545766d31d8",
+              "name": "Leaderboard definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leaderboards",
+                    "v1",
+                    ":deploymentId",
+                    "definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deploymentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2fb5589-255f-4110-9225-e0c3b3469f52",
+          "name": "Get leaderboard ranks",
+          "request": {
+            "name": "Get leaderboard ranks",
+            "description": {},
+            "url": {
+              "path": [
+                "leaderboards",
+                "v1",
+                ":deploymentId",
+                "leaderboard",
+                ":leaderboardId",
+                "ranks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deploymentId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61f37470-bbe0-4c0c-ba7b-b569155d7672",
+              "name": "Leaderboard rank entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leaderboards",
+                    "v1",
+                    ":deploymentId",
+                    "leaderboard",
+                    ":leaderboardId",
+                    "ranks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deploymentId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.epicgames.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "basic_profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.epicgames.dev/auth/v1/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5b1a60c9-b6f6-4555-99e9-e26db1fecaea",
+    "name": "Epic Online Services Web Achievements Leaderboards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST surface of Epic Online Services (EOS). Provides cross-platform game backend capabilities including OAuth-based authentication, the Connect Interface (product user ID exchange), Player Data and Title Storage, Achievements, Stats, Leaderboards, Friends, Lobby/Sessions, Sanctions, and Ecom entitlements. All requests are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal. Best-effort spec derived from publicly documented surfaces; not exhaustive.\n\nContact Support:\n Name: Epic Online Services",
+      "type": "text/plain"
+    }
+  }
+}

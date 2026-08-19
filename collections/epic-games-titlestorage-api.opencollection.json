@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Epic Online Services Web Achievements TitleStorage API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.epicgames.dev/auth/v1/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TitleStorage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download a title storage file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/title-storage/v1/:deploymentId/file/:filename",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a title storage file"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

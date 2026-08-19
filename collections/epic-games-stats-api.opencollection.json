@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Epic Online Services Web Achievements Stats API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.epicgames.dev/auth/v1/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List stats for a product user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/stats/v1/:deploymentId/users/:productUserId/stats",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "productUserId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List stats for a product user"
+        },
+        {
+          "info": {
+            "name": "Ingest stats for a product user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.epicgames.dev/stats/v1/:deploymentId/users/:productUserId/stats",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "productUserId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ingest stats for a product user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "46f47be3-927b-4c9e-97ee-b960957e15f3",
+      "name": "Ecom",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed0a1c9c-faf9-4900-8942-4a076d1d085b",
+          "name": "List entitlements for an Epic account",
+          "request": {
+            "name": "List entitlements for an Epic account",
+            "description": {},
+            "url": {
+              "path": [
+                "ecom",
+                "v1",
+                "identities",
+                ":accountId",
+                "entitlements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "namespace",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bb4f7a4-5d34-4e69-8535-f32f47b932b4",
+              "name": "Entitlements list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecom",
+                    "v1",
+                    "identities",
+                    ":accountId",
+                    "entitlements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.epicgames.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "basic_profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.epicgames.dev/auth/v1/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0048ef89-78ec-4e18-8e91-f8913753173e",
+    "name": "Epic Online Services Web Achievements Ecom API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST surface of Epic Online Services (EOS). Provides cross-platform game backend capabilities including OAuth-based authentication, the Connect Interface (product user ID exchange), Player Data and Title Storage, Achievements, Stats, Leaderboards, Friends, Lobby/Sessions, Sanctions, and Ecom entitlements. All requests are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal. Best-effort spec derived from publicly documented surfaces; not exhaustive.\n\nContact Support:\n Name: Epic Online Services",
+      "type": "text/plain"
+    }
+  }
+}

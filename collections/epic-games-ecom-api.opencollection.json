@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Epic Online Services Web Achievements Ecom API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.epicgames.dev/auth/v1/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ecom",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List entitlements for an Epic account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/ecom/v1/identities/:accountId/entitlements",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List entitlements for an Epic account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

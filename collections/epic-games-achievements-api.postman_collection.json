@@ -1,0 +1,241 @@
+{
+  "item": [
+    {
+      "id": "0869c5e6-dd69-4ea0-8f77-63cea4e6763f",
+      "name": "Achievements",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5a08c136-abe5-49fd-8a8b-b5179e0363f1",
+          "name": "List achievement definitions",
+          "request": {
+            "name": "List achievement definitions",
+            "description": {},
+            "url": {
+              "path": [
+                "achievements",
+                "v2",
+                ":deploymentId",
+                "definitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deploymentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1aee3dd4-e542-44c0-9cca-07ae1f70fb52",
+              "name": "Achievement definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "achievements",
+                    "v2",
+                    ":deploymentId",
+                    "definitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deploymentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b48d47-aa7e-47b8-aefa-2e9c4d745f5b",
+          "name": "List player achievements",
+          "request": {
+            "name": "List player achievements",
+            "description": {},
+            "url": {
+              "path": [
+                "achievements",
+                "v2",
+                ":deploymentId",
+                "users",
+                ":productUserId",
+                "achievements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deploymentId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productUserId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d35c28c8-4184-423c-b33e-5906f07b1210",
+              "name": "Player achievements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "achievements",
+                    "v2",
+                    ":deploymentId",
+                    "users",
+                    ":productUserId",
+                    "achievements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deploymentId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productUserId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.epicgames.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "basic_profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.epicgames.dev/auth/v1/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d9ad72b9-adbc-42f9-ab0e-87aa6c9e9051",
+    "name": "Epic Online Services Web Achievements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST surface of Epic Online Services (EOS). Provides cross-platform game backend capabilities including OAuth-based authentication, the Connect Interface (product user ID exchange), Player Data and Title Storage, Achievements, Stats, Leaderboards, Friends, Lobby/Sessions, Sanctions, and Ecom entitlements. All requests are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal. Best-effort spec derived from publicly documented surfaces; not exhaustive.\n\nContact Support:\n Name: Epic Online Services",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Epic Online Services Web Achievements Sanctions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.epicgames.dev/auth/v1/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sanctions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query player sanctions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/sanctions/v1/:deploymentId/sanctions",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetUserId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query player sanctions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

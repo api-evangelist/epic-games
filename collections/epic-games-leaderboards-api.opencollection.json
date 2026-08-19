@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Epic Online Services Web Achievements Leaderboards API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.epicgames.dev/auth/v1/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leaderboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List leaderboard definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/leaderboards/v1/:deploymentId/definitions",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List leaderboard definitions"
+        },
+        {
+          "info": {
+            "name": "Get leaderboard ranks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.epicgames.dev/leaderboards/v1/:deploymentId/leaderboard/:leaderboardId/ranks",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "leaderboardId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get leaderboard ranks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

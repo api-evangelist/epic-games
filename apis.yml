@@ -93,6 +93,11 @@ apis:
   tags:
   - Authentication
   - Identity
+  - OIDC
+  - SSO
+  tags_raw:
+  - Authentication
+  - Identity
   - OAuth
   - OIDC
   - SSO
@@ -173,6 +178,8 @@ apis:
   humanURL: https://dev.epicgames.com/en-US/services/epic-online-services
   baseURL: https://api.epicgames.dev
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI

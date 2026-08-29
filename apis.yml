@@ -10,6 +10,18 @@ description: Epic Games is the studio behind Fortnite, the Unreal Engine, the Ep
   EOS is cross-platform and runs on Windows, macOS, Linux, PlayStation, Xbox, Switch,
   iOS, Android, and web. This profile rolls Epic's developer-facing surfaces into
   a single index; the Unreal Engine surface has its own dedicated profile.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: self-serve

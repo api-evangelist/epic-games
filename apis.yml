@@ -247,7 +247,7 @@ apis:
   tags:
   - Authentication
   - Identity
-  - Single Sign-On
+  - SSO
   tags_raw:
   - Authentication
   - OAuth2

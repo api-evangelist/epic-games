@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Epic Online Services Web Achievements Ecom API
+  title: Epic Online Services Web Ecom API
   version: 1.0.0
-  description: REST surface of Epic Online Services (EOS). Provides cross-platform game backend capabilities including OAuth-based authentication, the Connect Interface (product user ID exchange), Player Data and Title Storage, Achievements, Stats, Leaderboards, Friends, Lobby/Sessions, Sanctions, and Ecom entitlements. All requests are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal. Best-effort spec derived from publicly documented surfaces; not exhaustive.
+  description: REST surface of Epic Online Services (EOS).
   contact:
     name: Epic Online Services
     url: https://dev.epicgames.com/docs/web-api-ref

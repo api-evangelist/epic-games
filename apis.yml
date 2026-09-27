@@ -95,11 +95,17 @@ apis:
   - OAuth
   - OIDC
   - SSO
+  - OAuth2
+  - Single Sign-On
   properties:
   - type: Documentation
     url: https://dev.epicgames.com/docs/epic-account-services
   - type: Authentication
     url: https://dev.epicgames.com/docs/epic-account-services/auth-interface
+  - type: Authentication
+    url: https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface
+  - type: GettingStarted
+    url: https://dev.epicgames.com/docs/epic-account-services/getting-started
 - aid: epic-games:epic-games-store-publishing
   name: Epic Games Store Publishing
   description: The Epic Games Store publishing surface lets developers upload builds, configure store pages, manage offers, run sales, and integrate with EOS achievements and entitlements. Publishing tools include the BuildPatchTool / EOS SDK Tool for uploading builds and a developer portal for managing products. There is no fully self-serve public REST Store API; publishing is gated through Epic's onboarding.
@@ -239,27 +245,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/epic-games-titlestorage-api-openapi.yml
-- aid: epic-games:epic-account-services
-  name: Epic Account Services API
-  description: Epic Account Services (EAS) provides authentication and identity for players using Epic Games accounts. Supports OAuth 2.0 authorization code, device, and exchange code flows, account info retrieval, and single sign-on across Epic Games Store and partner titles.
-  humanURL: https://dev.epicgames.com/docs/epic-account-services
-  baseURL: https://api.epicgames.dev
-  tags:
-  - Authentication
-  - Identity
-  - SSO
-  tags_raw:
-  - Authentication
-  - OAuth2
-  - Identity
-  - Single Sign-On
-  properties:
-  - type: Documentation
-    url: https://dev.epicgames.com/docs/epic-account-services
-  - type: Authentication
-    url: https://dev.epicgames.com/docs/epic-account-services/auth/auth-interface
-  - type: GettingStarted
-    url: https://dev.epicgames.com/docs/epic-account-services/getting-started
 - aid: epic-games:eos-achievements
   name: Epic Online Services Achievements API
   description: The EOS Achievements API enables developers to define, unlock, and query player achievements across platforms. Supports definitions, player progress, and unlocking via the EOS SDK or Web API.

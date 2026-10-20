@@ -1,0 +1,63 @@
+edges:
+- partner_name: Khronos Group (members)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.khronos.org/members/list
+  category: graphics standards body membership
+  partner_tier: promoter
+  contract_reference:
+    register: Khronos Group members list (khronos.org/members/list)
+    standard: Khronos Group
+    spec_file: null
+    role: khronos-member
+    registered_name: Epic Games, Inc.
+    register_id: https://www.khronos.org/members/list
+    matched_domain: epicgames.com
+    matched_by: domain
+    signal_note: 'participation only: membership level is partner_tier, never counted'
+    detected_by: sweep-xr-graphics.py
+    detected: '2026-10-20'
+  detected_by: sweep-xr-graphics.py
+  first_seen: '2026-10-20'
+- partner_name: Alliance for OpenUSD (AOUSD)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://aousd.org/members/
+  category: OpenUSD standards body
+  partner_tier: general
+  contract_reference:
+    register: Alliance for OpenUSD members (aousd.org/members; landscape.aousd.org/data/full.json)
+    standard: OpenUSD
+    spec_file: null
+    role: aousd-member
+    registered_name: Epic Games, Inc
+    register_id: aousd-members--general--epic-games-inc
+    matched_domain: epicgames.com
+    matched_by: domain
+    signal_note: 'participation only: steering / general is partner_tier, never counted'
+    detected_by: sweep-xr-graphics.py
+    detected: '2026-10-20'
+  detected_by: sweep-xr-graphics.py
+  first_seen: '2026-10-20'
+generated: '2026-10-20'
+method: searched
+source:
+- https://www.khronos.org/conformance/adopters/conformant-products
+- https://www.khronos.org/conformance/adopters/conformant-companies
+- https://www.khronos.org/members/list
+- https://landscape.aousd.org/data/full.json
+- https://www.khronos.org/conformance/adopters/file-format-adopters
+checked:
+- https://landscape.aousd.org/data/full.json
+- https://www.khronos.org/conformance/adopters/conformant-companies
+- https://www.khronos.org/conformance/adopters/conformant-products
+- https://www.khronos.org/conformance/adopters/file-format-adopters
+- https://www.khronos.org/members/list

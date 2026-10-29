@@ -1,4 +1,4 @@
-# Epic Games (epic-games)
+# Epic Games
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,174 +66,166 @@
 
 Epic Games is the studio behind Fortnite, the Unreal Engine, the Epic Games Store, MetaHuman, RealityScan, Twinmotion, RAD Game Tools, and the Epic Online Services (EOS) backend. Epic operates a unified developer portal at dev.epicgames.com that hosts the EOS SDK and REST APIs (Auth, Connect, Friends, Presence, Lobby, Sessions, Achievements, Stats, Leaderboards, Player Data Storage, Title Storage, Voice, Sanctions, Anti-Cheat, Reports, P2P, Ecom, User Info), the Unreal Engine documentation, the Epic Games Store publishing tools, and the Kids Web Services (KWS) compliance platform. EOS is cross-platform and runs on Windows, macOS, Linux, PlayStation, Xbox, Switch, iOS, Android, and web. This profile rolls Epic's developer-facing surfaces into a single index; the Unreal Engine surface has its own dedicated profile.
 
-**APIs.json:** [https://www.epicgames.com](https://www.epicgames.com)
+**Areas:** Achievements · Anti-Cheat · Cross-Platform · EOS · Epic Online Services · Game Backend · Game Development · Games · Identity · Lobby · Matchmaking · Multiplayer
 
-## Scope
+## Epic Games on APIs.io
 
-- **Type:** Index
-- **Access:** 3rd-Party
+Everything profiled for Epic Games is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/epic-games/](https://apis.io/providers/epic-games/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (23)
 
-- Achievements
-- Anti-Cheat
-- Cross-Platform
-- EOS
-- Epic Online Services
-- Game Backend
-- Game Development
-- Games
-- Identity
-- Lobby
-- Matchmaking
-- Multiplayer
-- Sessions
-- Unreal Engine
-- Voice
+- [Epic Online Services (EOS)](https://apis.io/apis/epic-games/epic-online-services/) — Epic Online Services is Epic's free cross-platform backend for games. EOS exposes both a native C/C++ SDK (with Unity, Unreal, and platform wrappers) and a…
+- [Epic Account Services](https://apis.io/apis/epic-games/epic-account-services/) — Epic Account Services provides OAuth 2.0 / OIDC sign-in with an Epic Account, exposing user identity, display name, country, preferred language, and…
+- [Epic Games Store Publishing](https://apis.io/apis/epic-games/epic-games-store-publishing/) — The Epic Games Store publishing surface lets developers upload builds, configure store pages, manage offers, run sales, and integrate with EOS achievements…
+- [Kids Web Services (KWS)](https://apis.io/apis/epic-games/kids-web-services/) — Kids Web Services is Epic's compliance and parental-verification platform for games and online services that handle children's data. KWS exposes REST APIs…
+- [Unreal Engine (Pointer)](https://apis.io/apis/epic-games/unreal-engine-pointer/) — Unreal Engine is profiled separately. See the unreal-engine entry for Unreal SDK / Plugin / Pixel Streaming / RHI / Online Subsystem details.
+- [Epic Games Achievements API](https://apis.io/apis/epic-games/epic-games-achievements-api/) — The Achievements API from Epic Games — 2 operation(s) for achievements.
+- [Epic Games Auth API](https://apis.io/apis/epic-games/epic-games-auth-api/) — The Auth API from Epic Games — 4 operation(s) for auth.
+- [Epic Games Connect API](https://apis.io/apis/epic-games/epic-games-connect-api/) — The Connect API from Epic Games — 1 operation(s) for connect.
+- [Epic Games Ecom API](https://apis.io/apis/epic-games/epic-games-ecom-api/) — The Ecom API from Epic Games — 1 operation(s) for ecom.
+- [Epic Games Leaderboards API](https://apis.io/apis/epic-games/epic-games-leaderboards-api/) — The Leaderboards API from Epic Games — 2 operation(s) for leaderboards.
+- [Epic Games PlayerDataStorage API](https://apis.io/apis/epic-games/epic-games-playerdatastorage-api/) — The PlayerDataStorage API from Epic Games — 1 operation(s) for playerdatastorage.
+- [Epic Games Sanctions API](https://apis.io/apis/epic-games/epic-games-sanctions-api/) — The Sanctions API from Epic Games — 1 operation(s) for sanctions.
+- [Epic Games Stats API](https://apis.io/apis/epic-games/epic-games-stats-api/) — The Stats API from Epic Games — 1 operation(s) for stats.
+- [Epic Games TitleStorage API](https://apis.io/apis/epic-games/epic-games-titlestorage-api/) — The TitleStorage API from Epic Games — 1 operation(s) for titlestorage.
+- [Epic Online Services Achievements API](https://apis.io/apis/epic-games/eos-achievements/) — The EOS Achievements API enables developers to define, unlock, and query player achievements across platforms. Supports definitions, player progress, and…
+- [Epic Online Services Leaderboards API](https://apis.io/apis/epic-games/eos-leaderboards/) — The EOS Leaderboards API provides global and per-friend leaderboards backed by player stats. Developers configure leaderboards in the developer portal and…
+- [Epic Online Services Stats API](https://apis.io/apis/epic-games/eos-stats/) — The EOS Stats API tracks player statistics over time, providing the data source that powers leaderboards and achievements. Supports ingest, increment, and…
+- [Epic Online Services Friends API](https://apis.io/apis/epic-games/eos-friends/) — The EOS Friends API exposes a player's Epic Games friends list, allowing games to surface social presence, invitations, and party formation across platforms.
+- [Epic Online Services Ecom API](https://apis.io/apis/epic-games/eos-ecom/) — The EOS Ecom (Ecommerce) Interface API exposes the player's Epic Games Store entitlements, ownership, catalog offers, and checkout flows. Used by titles…
+- [Epic Online Services Lobby and Sessions API](https://apis.io/apis/epic-games/eos-lobby-sessions/) — The EOS Lobby and Sessions APIs provide matchmaking primitives for multiplayer games, including lobby creation, joining, attribute filtering, and dedicated…
+- [Epic Online Services Player Data Storage API](https://apis.io/apis/epic-games/eos-player-data-storage/) — The EOS Player Data Storage and Title Storage APIs persist per-player save data and shared title-level configuration in the cloud, with cross-platform…
+- [Epic Online Services Anti-Cheat API](https://apis.io/apis/epic-games/eos-anti-cheat/) — Easy Anti-Cheat (EAC) integrated into Epic Online Services provides kernel and user-mode anti-cheat protections, server-side validation, and reporting…
+- [Epic Online Services Voice API](https://apis.io/apis/epic-games/eos-voice/) — The EOS Voice Interface delivers in-game voice chat using Vivox backend infrastructure, with positional audio, room management, and moderation controls…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-23
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### Epic Online Services (EOS)
+GraphQL schemas.
 
-Epic Online Services is Epic's free cross-platform backend for games. EOS exposes both a native C/C++ SDK (with Unity, Unreal, and platform wrappers) and a set of REST web services covering identity (Epic Account Services, Connect, Auth), social (Friends, Presence, Blocklist), play (Lobby, Sessions, P2P, Voice), progression (Achievements, Stats, Leaderboards), storage (Player Data Storage, Title Storage), integrity (Anti-Cheat, Sanctions, Reports), and commerce (Ecom). All EOS APIs are gated behind an Epic developer organization, sandbox, and client credentials issued in the EOS Developer Portal.
+- [Epic Games GraphQL](https://apis.io/graphqls/epic-games/epic-games-graphql/)
 
-- **Human URL:** [https://dev.epicgames.com/en-US/services/epic-online-services](https://dev.epicgames.com/en-US/services/epic-online-services)
-- **Base URL:** `https://api.epicgames.dev`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Achievements
-- Anti-Cheat
-- EOS
-- Game Backend
-- Identity
-- Lobby
-- Sessions
-- Voice
+- [Epic Games Agentic Access](https://apis.io/agentic-access/epic-games/epic-games-agentic-access/)
 
-#### Properties
+#### Collections (10)
 
-- [Portal](https://dev.epicgames.com)
-- [Documentation](https://dev.epicgames.com/docs/epic-online-services)
-- [Getting Started](https://dev.epicgames.com/docs/epic-online-services/eos-get-started)
-- [SDK](https://dev.epicgames.com/docs/epic-online-services/platform-sdks)
-- [Web A P I](https://dev.epicgames.com/docs/web-api-ref)
-- [Postman Collection](collections/epic-games.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epic-games.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### Epic Account Services
+- [Epic Online Services Web API](https://apis.io/collections/epic-games/open-epic-games/)
+- [Epic Online Services Web Achievements API](https://apis.io/collections/epic-games/open-epic-games-achievements-api/)
+- [Epic Online Services Web Achievements Auth API](https://apis.io/collections/epic-games/open-epic-games-auth-api/)
+- [Epic Online Services Web Achievements Connect API](https://apis.io/collections/epic-games/open-epic-games-connect-api/)
+- [Epic Online Services Web Achievements Ecom API](https://apis.io/collections/epic-games/open-epic-games-ecom-api/)
+- [Epic Online Services Web Achievements Leaderboards API](https://apis.io/collections/epic-games/open-epic-games-leaderboards-api/)
+- [Epic Online Services Web Achievements PlayerDataStorage API](https://apis.io/collections/epic-games/open-epic-games-playerdatastorage-api/)
+- [Epic Online Services Web Achievements Sanctions API](https://apis.io/collections/epic-games/open-epic-games-sanctions-api/)
+- [Epic Online Services Web Achievements Stats API](https://apis.io/collections/epic-games/open-epic-games-stats-api/)
+- [Epic Online Services Web Achievements TitleStorage API](https://apis.io/collections/epic-games/open-epic-games-titlestorage-api/)
 
-Epic Account Services provides OAuth 2.0 / OIDC sign-in with an Epic Account, exposing user identity, display name, country, preferred language, and linked-account information to integrating games and tools. It powers cross-platform Epic login and is the identity layer underneath EOS Auth.
+#### Security (3)
 
-- **Human URL:** [https://dev.epicgames.com/docs/epic-account-services](https://dev.epicgames.com/docs/epic-account-services)
-- **Base URL:** `https://api.epicgames.dev`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Epic Games Authentication](https://apis.io/security/epic-games/epic-games-authentication/)
+- [Epic Games Domain Security](https://apis.io/security/epic-games/epic-games-domain-security/)
+- [Epic Games Vulnerability Disclosure](https://apis.io/security/epic-games/epic-games-vulnerability-disclosure/)
 
-- Authentication
-- Identity
-- OAuth
-- OIDC
-- SSO
+#### OAuth scopes (1)
 
-#### Properties
+The permissions the API asks for.
 
-- [Documentation](https://dev.epicgames.com/docs/epic-account-services)
-- [Authentication](https://dev.epicgames.com/docs/epic-account-services/auth-interface)
-- [Postman Collection](collections/epic-games.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epic-games.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Epic Games Scopes](https://apis.io/scopes/epic-games/epic-games-scopes/)
 
-### Epic Games Store Publishing
+#### Plans and pricing (1)
 
-The Epic Games Store publishing surface lets developers upload builds, configure store pages, manage offers, run sales, and integrate with EOS achievements and entitlements. Publishing tools include the BuildPatchTool / EOS SDK Tool for uploading builds and a developer portal for managing products. There is no fully self-serve public REST Store API; publishing is gated through Epic's onboarding.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://dev.epicgames.com/en-US/store](https://dev.epicgames.com/en-US/store)
-- **Base URL:** `https://dev.epicgames.com`
+- [Epic Games Plans Pricing](https://apis.io/plans/epic-games/epic-games-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- Builds
-- Entitlements
-- Publishing
-- Store
+Published request limits.
 
-#### Properties
+- [Epic Games Rate Limits](https://apis.io/rate-limits/epic-games/epic-games-rate-limits/)
 
-- [Portal](https://dev.epicgames.com/en-US/store)
-- [Documentation](https://dev.epicgames.com/docs/epic-games-store)
-- [Postman Collection](collections/epic-games.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epic-games.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### FinOps (1)
 
-### Kids Web Services (KWS)
+What the API costs to run, by operation.
 
-Kids Web Services is Epic's compliance and parental-verification platform for games and online services that handle children's data. KWS exposes REST APIs and an SDK for age verification, parental consent collection (COPPA, GDPR-K, age-appropriate design code), account linking, and consent revocation flows.
+- [Epic Games Finops](https://apis.io/finops/epic-games/epic-games-finops/)
 
-- **Human URL:** [https://kidswebservices.com](https://kidswebservices.com)
-- **Base URL:** `https://kidswebservices.com`
+## Where to find this API
 
-#### Tags
-
-- COPPA
-- Compliance
-- GDPR-K
-- Kids
-- Parental Consent
-- Privacy
-
-#### Properties
-
-- [Portal](https://kidswebservices.com)
-- [Documentation](https://docs.kidswebservices.com)
-- [Postman Collection](collections/epic-games.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epic-games.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Unreal Engine (Pointer)
-
-Unreal Engine is profiled separately. See the unreal-engine entry for Unreal SDK / Plugin / Pixel Streaming / RHI / Online Subsystem details.
-
-- **Human URL:** [https://www.unrealengine.com](https://www.unrealengine.com)
-- **Base URL:** `https://www.unrealengine.com`
-
-#### Tags
-
-- Game Engine
-- SDK
-- Unreal Engine
-
-#### Properties
-
-- [Sister Entry](https://github.com/api-evangelist/unreal-engine)
-- [Postman Collection](collections/epic-games.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/epic-games.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.epicgames.com)
-- [Store](https://store.epicgames.com)
-- [Portal](https://dev.epicgames.com)
 - [Documentation](https://dev.epicgames.com/docs)
-- [Community](https://dev.epicgames.com/community)
-- [API Reference](https://dev.epicgames.com/docs/web-api-ref)
-- [Getting Started](https://dev.epicgames.com/docs/epic-online-services/eos-get-started)
-- [Tutorials](https://dev.epicgames.com/docs/services/en-US/Tutorials)
-- [GitHub Organization](https://github.com/EpicGames)
-- [Status](https://status.epicgames.com)
+- [Getting started](https://dev.epicgames.com/docs/epic-online-services/eos-get-started)
+- [API reference](https://dev.epicgames.com/docs/web-api-ref)
 - [Support](https://www.epicgames.com/help)
 - [Blog](https://www.unrealengine.com/blog)
-- [Terms of Service](https://store.epicgames.com/en-US/eula)
-- [Privacy Policy](https://www.epicgames.com/site/en-US/privacypolicy)
-- [Terms of Service](https://www.epicgames.com/site/en-US/eula)
-- [X (Twitter)](https://x.com/EpicGames)
-- [Facebook](https://www.facebook.com/epicgames)
-- [LinkedIn](https://www.linkedin.com/company/epic-games)
-- [YouTube](https://www.youtube.com/@epic)
+- [Terms of service](https://store.epicgames.com/en-US/eula)
+- [Privacy policy](https://www.epicgames.com/site/en-US/privacypolicy)
+- [GitHub](https://github.com/EpicGames)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 40.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 42.9 |
+| Contract governance | 0.0 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 64.3 |
+| Access clarity | 26.3 |
+
+**Agent readiness 22.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/epic-games/](https://apis.io/providers/epic-games/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Epic Games: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/epic-games/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
